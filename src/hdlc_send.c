@@ -148,6 +148,10 @@ static int ax25_only_hdlc_send_frame (int chan, unsigned char *fbuf, int flen, i
 
 	send_control_nrzi (chan, 0x7e);	/* End frame */
 
+    /* Extra bytes to give radio processing time between frames */
+	send_control_nrzi (chan, 0x7e);
+	send_control_nrzi (chan, 0x7e);
+
 	return (number_of_bits_sent[chan]);
 }
 
